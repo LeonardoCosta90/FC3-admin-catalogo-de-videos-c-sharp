@@ -1,4 +1,4 @@
-using FC.Codeflix.Catalog.UnitTests.Common;
+﻿using FC.Codeflix.Catalog.UnitTests.Common;
 using Xunit;
 using DomainEntity = FC.Codeflix.Catalog.Domain.Entity;
 
@@ -6,37 +6,37 @@ namespace FC.Codeflix.Catalog.UnitTests.Domain.Entity.Category;
 
 public class CategoryTestFixture : BaseFixture
 {
-  public CategoryTestFixture()
-      : base() { }
+    public CategoryTestFixture()
+        : base() {}
 
-  public string GetValidCategoryName()
-  {
-    var categoryName = "";
-    while (categoryName.Length < 3)
-      categoryName = Faker.Commerce.Categories(1)[0];
-    if (categoryName.Length > 255)
-      categoryName = categoryName[..255];
-    return categoryName;
-  }
+    public string GetValidCategoryName()
+    {
+        var categoryName = "";
+        while (categoryName.Length < 3)
+            categoryName = Faker.Commerce.Categories(1)[0];
+        if (categoryName.Length > 255)
+            categoryName = categoryName[..255];
+        return categoryName;
+    }
 
-  public string GetValidcategoryDescription()
-  {
-    var categoryDescription =
-        Faker.Commerce.ProductDescription();
-    if (categoryDescription.Length > 10_000)
-      categoryDescription =
-          categoryDescription[..10_000];
-    return categoryDescription;
-  }
+    public string GetValidcategoryDescription()
+    {
+        var categoryDescription = 
+            Faker.Commerce.ProductDescription();
+        if(categoryDescription.Length > 10_000)
+            categoryDescription = 
+                categoryDescription[..10_000];
+        return categoryDescription;
+    }
 
-  public DomainEntity.Category GetValidCategory()
-      => new(
-          GetValidCategoryName(),
-          GetValidcategoryDescription()
-      );
+    public DomainEntity.Category GetValidCategory()
+        => new(
+            GetValidCategoryName(),
+            GetValidcategoryDescription()
+        );
 }
 
 [CollectionDefinition(nameof(CategoryTestFixture))]
-public class CategoryTestFixtureCollection
+public class CategoryTestFixtureCollection 
     : ICollectionFixture<CategoryTestFixture>
 { }
