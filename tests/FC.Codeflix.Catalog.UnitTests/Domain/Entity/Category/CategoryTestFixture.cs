@@ -7,7 +7,7 @@ namespace FC.Codeflix.Catalog.UnitTests.Domain.Entity.Category;
 public class CategoryTestFixture : BaseFixture
 {
     public CategoryTestFixture()
-        : base() {}
+        : base() { }
 
     public string GetValidCategoryName()
     {
@@ -19,12 +19,12 @@ public class CategoryTestFixture : BaseFixture
         return categoryName;
     }
 
-    public string GetValidcategoryDescription()
+    public string GetValidCategoryDescription()
     {
-        var categoryDescription = 
+        var categoryDescription =
             Faker.Commerce.ProductDescription();
-        if(categoryDescription.Length > 10_000)
-            categoryDescription = 
+        if (categoryDescription.Length > 10_000)
+            categoryDescription =
                 categoryDescription[..10_000];
         return categoryDescription;
     }
@@ -32,11 +32,11 @@ public class CategoryTestFixture : BaseFixture
     public DomainEntity.Category GetValidCategory()
         => new(
             GetValidCategoryName(),
-            GetValidcategoryDescription()
+            GetValidCategoryDescription()
         );
 }
 
 [CollectionDefinition(nameof(CategoryTestFixture))]
-public class CategoryTestFixtureCollection 
+public class CategoryTestFixtureCollection
     : ICollectionFixture<CategoryTestFixture>
 { }
